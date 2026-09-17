@@ -3,7 +3,7 @@
 // return value. The only difference from a real MCP server is these run
 // in-browser instead of over stdio/HTTP, so you can see them fire live.
 
-import { students, courseEnrollment } from "../data/students";
+import { students, courseEnrollment } from "../data/students.js";
 
 export function getStudentByName(name) {
   const match = students.find((s) =>
