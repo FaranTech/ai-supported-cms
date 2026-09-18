@@ -123,7 +123,7 @@ export default function Dashboard() {
         </div>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "1.6fr 1fr", gap: 16, marginBottom: 16 }}>
+      <div className="dashboard-grid">
         <div className="card card-pad">
           <div className="card-head">
             <div>
@@ -178,35 +178,37 @@ export default function Dashboard() {
             <div className="card-sub">Enrolled vs. capacity by course</div>
           </div>
         </div>
-        <table className="data-table" style={{ marginTop: 10 }}>
-          <thead>
-            <tr>
-              <th>Course</th>
-              <th>Title</th>
-              <th>Enrolled</th>
-              <th>Capacity</th>
-              <th>Fill</th>
-            </tr>
-          </thead>
-          <tbody>
-            {courseEnrollment.map((c) => {
-              const pct = Math.round((c.enrolled / c.capacity) * 100);
-              return (
-                <tr key={c.code}>
-                  <td style={{ fontWeight: 600 }}>{c.code}</td>
-                  <td>{c.title}</td>
-                  <td>{c.enrolled}</td>
-                  <td>{c.capacity}</td>
-                  <td>
-                    <span className={"badge " + (pct >= 90 ? "warn" : "ok")}>
-                      <span className="dot" /> {pct}%
-                    </span>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+        <div className="table-scroll">
+          <table className="data-table" style={{ marginTop: 10 }}>
+            <thead>
+              <tr>
+                <th>Course</th>
+                <th>Title</th>
+                <th>Enrolled</th>
+                <th>Capacity</th>
+                <th>Fill</th>
+              </tr>
+            </thead>
+            <tbody>
+              {courseEnrollment.map((c) => {
+                const pct = Math.round((c.enrolled / c.capacity) * 100);
+                return (
+                  <tr key={c.code}>
+                    <td style={{ fontWeight: 600 }}>{c.code}</td>
+                    <td>{c.title}</td>
+                    <td>{c.enrolled}</td>
+                    <td>{c.capacity}</td>
+                    <td>
+                      <span className={"badge " + (pct >= 90 ? "warn" : "ok")}>
+                        <span className="dot" /> {pct}%
+                      </span>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
         <div className="view-all-link">
           View all courses <ChevronRight size={13} />
         </div>

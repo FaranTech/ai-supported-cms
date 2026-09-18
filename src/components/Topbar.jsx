@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import { Search, Bell, HelpCircle } from "lucide-react";
+import { Search, Bell, HelpCircle, Menu } from "lucide-react";
 
 const titles = {
   "/": "Dashboard",
@@ -8,14 +8,17 @@ const titles = {
   "/ask": "Ask the Registrar",
 };
 
-export default function Topbar() {
+export default function Topbar({ onMenuClick }) {
   const { pathname } = useLocation();
   const title = titles[pathname] || "CampusOS";
 
   return (
     <div className="topbar">
+      <button className="menu-btn" onClick={onMenuClick} aria-label="Toggle menu">
+        <Menu size={19} strokeWidth={1.8} />
+      </button>
       <div className="breadcrumb">
-        Meridian University <span>›</span> <b>{title}</b>
+        <span className="breadcrumb-org">Meridian University ›</span> <b>{title}</b>
       </div>
       <div className="topbar-right">
         <div className="topbar-search">

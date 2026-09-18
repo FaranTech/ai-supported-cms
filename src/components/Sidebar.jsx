@@ -26,9 +26,9 @@ const navGroups = [
   },
 ];
 
-export default function Sidebar() {
+export default function Sidebar({ open, onNavigate }) {
   return (
-    <aside className="sidebar">
+    <aside className={"sidebar" + (open ? " open" : "")}>
       <div className="brand">
         <div className="mark">
           <Sparkles size={17} strokeWidth={2} />
@@ -55,6 +55,7 @@ export default function Sidebar() {
               key={to}
               to={to}
               end={end}
+              onClick={onNavigate}
               className={({ isActive }) => "nav-item" + (isActive ? " active" : "")}
             >
               <span className="nav-item-inner">

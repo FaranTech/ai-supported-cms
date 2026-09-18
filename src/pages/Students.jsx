@@ -46,6 +46,7 @@ export default function Students() {
       </div>
 
       <div className="card card-pad">
+        <div className="table-scroll">
         <table className="data-table">
           <thead>
             <tr>
@@ -117,6 +118,7 @@ export default function Students() {
             ))}
           </tbody>
         </table>
+        </div>
       </div>
     </>
   );
